@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "backend/python-server/**"
+      - "python-server/**"
   workflow_dispatch:
 
 jobs:
@@ -17,8 +17,8 @@ jobs:
 
       - name: Generate deployment package
         run: |
-          cd backend/python-server
-          zip -r ../../deploy-python.zip . -x '*.git*' '__pycache__/*' '.env' '*.pyc' '.pytest_cache/*'
+          cd python-server
+          zip -r ../deploy-python.zip . -x '*.git*' '__pycache__/*' '.env' '*.pyc' '.pytest_cache/*'
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21

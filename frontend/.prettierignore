@@ -1,8 +1,0 @@
-node_modules
-dist
-build
-.venv
-venv
-*.min.js
-*.min.css
-EOF

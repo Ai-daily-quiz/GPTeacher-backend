@@ -1,9 +1,8 @@
-backend/python-server/.env
-backend/python-server/venv/
-backend/python-server/__pycache__/
-backend/node-server/.env
-backend/node-server/node_modules/
-frontend/.env
+/python-server/.env
+/python-server/venv/
+/python-server/__pycache__/
+/node-server/.env
+/node-server/node_modules/
 .DS_Store
 _jpype.*
 *.log

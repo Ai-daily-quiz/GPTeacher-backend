@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "backend/node-server/**" # 이 폴더 변경시만 배포
+      - "node-server/**"
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -16,8 +17,8 @@ jobs:
 
       - name: Generate deployment package
         run: |
-          cd backend/node-server
-          zip -r ../../deploy.zip . -x '*.git*' 'node_modules/*' '.env'
+          cd node-server
+          zip -r ../deploy.zip . -x '*.git*' 'node_modules/*' '.env'
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
