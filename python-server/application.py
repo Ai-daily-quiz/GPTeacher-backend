@@ -28,7 +28,7 @@ if not url or not key:
 supabase: Client = create_client(url, key)
 
 model = genai.GenerativeModel("gemini-2.0-flash")
-MAX_TEXT_LENGTH = 200000
+MAX_TEXT_LENGTH = 10000
 JSON_MARKDOWN_PREFIX_LENGTH = 7
 JSON_MARKDOWN_SUFFIX_LENGTH = 3
 
@@ -64,9 +64,8 @@ def generate_quiz(text, user_id, formatted_date):
         **중요: 제공된 텍스트에서 직접 언급된 내용만으로 퀴즈를 만들어줘.
         카테고리 설명은 분류 참고용이지, 퀴즈 내용 생성용이 아니야
         퀴즈는 만들 퀴즈가 없으면 카테고리와 생성문제를 줄여서 만들어줘. 대신 제공된 PDF와 텍스트에서만 만들고 관련없는 퀴즈는 만들면 안돼**
-        **중요: 카테고리(토픽, 주제)는 중복되면안돼**
 
-        카테고리 주제 수 : 서로 다른 6개
+        카테고리 주제 수 : 서로 다른 6개 (**카테고리 중복 허용x **)
         주제당 퀴즈 문제 수 : 2개
             - 카테고리 주제 당 ox 문제 수 : 1개
             - 카테고리 주제 당 multiple a문제 수 : 1개
@@ -208,6 +207,28 @@ def count_incorrect_quiz():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route("/api/quiz/count-free", methods=["GET"])
+def count_free_quiz():
+    try:
+        response = (
+            supabase.table("quizzes")
+            .select("*", count="exact")
+            .eq("quiz_id", "free%")
+            .execute()
+        )
+
+        return jsonify(
+            {
+                "success": True,
+                "free_count": response.count,
+            }
+        )
+
+    except Exception as e:
+        print("에러 : ", e)
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route("/api/quiz/pending", methods=["GET"])
 def get_pending_quiz():
     auth_header = request.headers.get("Authorization", "")
@@ -286,6 +307,40 @@ def get_incorrect_quiz():
                 "success": True,
                 "result": category_list,
                 "incorrect_count": len(response.data),
+            }
+        )
+
+    except Exception as e:
+        print("에러 : ", e)
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/quiz/free", methods=["GET"])
+def get_free_quiz():
+    try:
+        response = (
+            supabase.table("quizzes").select("*").ilike("quiz_id", "free%").execute()
+        )
+
+        category_group = {}
+        for quiz in response.data:
+            category = quiz["category"]
+            topic_id = quiz["topic_id"]
+
+            if category not in category_group:
+                category_group[category] = {
+                    "category": category,
+                    "topic_id": topic_id,
+                    "questions": [],
+                }
+            category_group[category]["questions"].append(quiz)
+        category_list = list(category_group.values())
+
+        return jsonify(
+            {
+                "success": True,
+                "result": category_list,
+                "free_count": len(response.data),
             }
         )
 
