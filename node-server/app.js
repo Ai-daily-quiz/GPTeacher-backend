@@ -15,8 +15,8 @@ const app = express();
 
 // 미들웨어 설정
 app.use(cors());
-app.use(express.json({ limit: "100mb" }));
-app.use(express.urlencoded({ limit: "100mb", extended: true }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 // 라우트 정의
 app.get("/", (req, res) => {
@@ -54,6 +54,20 @@ app.get("/api/quiz/count-incorrect", async (req, res) => {
   }
 });
 
+app.get("/api/quiz/count-free", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `${PYTHON_API_URL}/api/quiz/count-free`
+      // {
+      //   headers: req.headers,
+      // }
+    );
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.get("/api/quiz/pending", async (req, res) => {
   try {
     const response = await axios.get(`${PYTHON_API_URL}/api/quiz/pending`, {
@@ -70,6 +84,15 @@ app.get("/api/quiz/incorrect", async (req, res) => {
     const response = await axios.get(`${PYTHON_API_URL}/api/quiz/incorrect`, {
       headers: req.headers,
     });
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get("/api/quiz/free", async (req, res) => {
+  try {
+    const response = await axios.get(`${PYTHON_API_URL}/api/quiz/free`, {});
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: error.message });
