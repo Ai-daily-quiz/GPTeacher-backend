@@ -207,6 +207,28 @@ def count_incorrect_quiz():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route("/api/quiz/count-free", methods=["GET"])
+def count_free_quiz():
+    try:
+        response = (
+            supabase.table("quizzes")
+            .select("*", count="exact")
+            .eq("quiz_id", "free%")
+            .execute()
+        )
+
+        return jsonify(
+            {
+                "success": True,
+                "free_count": response.count,
+            }
+        )
+
+    except Exception as e:
+        print("에러 : ", e)
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route("/api/quiz/pending", methods=["GET"])
 def get_pending_quiz():
     auth_header = request.headers.get("Authorization", "")
@@ -285,6 +307,40 @@ def get_incorrect_quiz():
                 "success": True,
                 "result": category_list,
                 "incorrect_count": len(response.data),
+            }
+        )
+
+    except Exception as e:
+        print("에러 : ", e)
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/quiz/free", methods=["GET"])
+def get_free_quiz():
+    try:
+        response = (
+            supabase.table("quizzes").select("*").ilike("quiz_id", "free%").execute()
+        )
+
+        category_group = {}
+        for quiz in response.data:
+            category = quiz["category"]
+            topic_id = quiz["topic_id"]
+
+            if category not in category_group:
+                category_group[category] = {
+                    "category": category,
+                    "topic_id": topic_id,
+                    "questions": [],
+                }
+            category_group[category]["questions"].append(quiz)
+        category_list = list(category_group.values())
+
+        return jsonify(
+            {
+                "success": True,
+                "result": category_list,
+                "free_count": len(response.data),
             }
         )
 

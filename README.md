@@ -12,7 +12,7 @@
 <Br>
 <Br>
 
-# 프로젝트 소개 🤖
+# 프로젝트 소개
 
 GPTeacher 프로젝트는 **생성형 Ai**를 활용해 사용자가 PDF 파일 혹은 제공한 텍스트 내용을 기반으로 맞춤형 퀴즈를 제작해주는 학습 플랫폼입니다. 정보 소비를 넘어 정보 생산에 기반한 학습이라는 새로운 학습 경험을 제공합니다.
 
@@ -22,11 +22,11 @@ GPTeacher 프로젝트는 **생성형 Ai**를 활용해 사용자가 PDF 파일 
 <br>
 <br>
 
-# 링크 🔗
+# 링크
 
 <div align="center">
 
-[서비스 페이지](https://www.notion.so/239f6c9302b6802899cad4f2824aac75?pvs=21) | [깃허브 레포지토리](https://github.com/Ai-daily-quiz/Ai-quiz)
+[서비스 페이지](https://gp-teacher.vercel.app/) | [깃허브 레포지토리](https://github.com/Ai-daily-quiz/Ai-quiz)
 
 </div>
 
@@ -34,31 +34,30 @@ GPTeacher 프로젝트는 **생성형 Ai**를 활용해 사용자가 PDF 파일 
 
 # 목차 📖
 
-- [프로젝트 소개 🤖](#프로젝트-소개-🤖)
-- [링크 🔗](#링크-🔗)
-- [✨ 핵심 기능](#✨-핵심-기능)
-  - [🎯 AI 기반 퀴즈 생성](#🎯-ai-기반-퀴즈-생성)
-  - [🎯 개인화된 학습 관리](#🎯-개인화된-학습-관리)
-- [🛠 기술 스택](#🛠-기술-스택)
+- [프로젝트 소개](#프로젝트-소개)
+- [링크](#링크)
+- [핵심 기능](#핵심-기능)
+  - [AI 기반 퀴즈 생성](#ai-기반-퀴즈-생성)
+  - [개인화된 학습 관리](#개인화된-학습-관리)
+- [기술 스택](#기술-스택)
   - [Client](#client)
   - [Server](#server)
-  - [Deployment](#deployment)
-- [💡 기능 구현 및 챌린지](#💡-기능-구현-및-챌린지)
-  - [💬 카카오 oAuth와 KOE205 에러](#💬-카카오-oauth와-koe205-에러)
-  - [🥑 드래그 앤 드랍](#🥑-드래그-앤-드랍)
-  - [⏰ 타이머](#⏰-타이머)
-  - [🖥️ Background Processing](#🖥️-background-processing)
+  - [Infra](#infra)
+- [기능 구현 및 챌린지](#기능-구현-및-챌린지)
+  - [카카오 oAuth와 KOE205 에러](#카카오-oauth와-koe205-에러)
+  - [드래그 앤 드랍](#드래그-앤-드랍)
+  - [타이머](#타이머)
+  - [Background Processing](#background-processing)
 - [회고](#회고)
-- [기능 보완 계획](#기능-보완-계획)
   <br><br><br>
 
-# **✨ 핵심 기능**
+# **핵심 기능**
 
 사용자가 입력한 텍스트 또는 PDF 문서를, Ai가 분석하여 주제별로 분류하고 퀴즈를 생성해 효율적으로 복습하고 쉽게 자신만의 학습 콘텐츠를 제작할 수 있습니다. 과정을 통해 사용자는 자신만의 콘텐츠를 체계적으로 복습할 수 있으며, 학습의 밀도와 효율을 동시에 높일 수 있습니다.,
 
 <br>
 
-> ## **🎯 Ai 기반 퀴즈 생성**
+> ## **Ai 기반 퀴즈 생성**
 
 - 사용자는 텍스트나 PDF 파일을 업로드하여 LLM(대규모 언어 모델, Large Language Model)(작은 텍스트 font) 을 통해 분석 및 퀴즈 생성을 요청할 수 있습니다.
 - 파일 업로드 시 로그인 사용자는 최대 50MB까지, 비회원 사용자는 최대 10MB까지 업로드 가능합니다.
@@ -84,9 +83,9 @@ GPTeacher 프로젝트는 **생성형 Ai**를 활용해 사용자가 PDF 파일 
 
 <br><br><br>
 
-> ## **🎯 개인화된 학습 관리**
+> ## **개인화된 학습 관리**
 
-- 서비스는 로그인한 사용자의 중간에 중단한 퀴즈나, 틀린 퀴즈를 저장하해 이어서 학습할 수 있도록 도와줍니다.
+- 서비스는 로그인한 사용자의 중간에 중단한 퀴즈나, 틀린 퀴즈를 저장해 이어서 학습할 수 있도록 도와줍니다.
 - 이전에 풀던 문제를 다시 시작할지, 새로운 문제로 시작할지 선택할 수 있습니다.
 - 틀린 문제를 중심으로 복습할 수 있어, 반복 학습을 통해 학습 효과를 극대화할 수 있습니다.
 
@@ -105,7 +104,7 @@ GPTeacher 프로젝트는 **생성형 Ai**를 활용해 사용자가 PDF 파일 
 
 <br><br><br>
 
-# **🛠 기술 스택**
+# **기술 스택**
 
 <br>
 
@@ -116,6 +115,7 @@ GPTeacher 프로젝트는 **생성형 Ai**를 활용해 사용자가 PDF 파일 
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+    <img src="https://img.shields.io/badge/Zustand-a83254?style=for-the-badge&logo=Zustand&logoColor=white">
 </p>
 <br>
 <br>
@@ -130,24 +130,27 @@ GPTeacher 프로젝트는 **생성형 Ai**를 활용해 사용자가 PDF 파일 
   <img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" />
   <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" />
+  
 </p>
 <br>
 <br>
 
-## **Deployment**
+## **Infra**
 
 <p>
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
   <img src="https://img.shields.io/badge/AWS%20Elastic%20Beanstalk-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white" />
+  <img src="https://img.shields.io/badge/Prettier-1A2B34?style=for-the-badge&logo=prettier&logoColor=F7B93E" />
+<img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" />
 </p>
 <br><br><br><br>
 
-# **💡 기능 구현 및 챌린지**
+# **기능 구현 및 챌린지**
 
 <br>
 <br>
 
-> ## 💬 카카오 oAuth와 KOE205 에러
+> ## 카카오 oAuth와 KOE205 에러
 
 Supabase Provider에 카카오톡을 등록하기 위해 kakao developers에서 발급받은 카카오 API Key, Secret code 와 콜백 url을 설정합니다.
 
@@ -228,7 +231,7 @@ Set following scopes under the "Consent Items": account_email, profile_image, pr
 
 <br><br><br>
 
-> ## 🥑 드래그 앤 드랍
+> ## 드래그 앤 드랍
 
 드래그 앤 드롭은 직관적이고 사용 편의성이 뛰어난 파일 업로드 방식 중 하나입니다. 해당 기능은 react-dropzone 라이브러리를 활용하여 구현하였습니다.
 
@@ -259,7 +262,7 @@ const { getRootProps, getInputProps, isDragActive } = useDropzone({
 개인적으로 이러한 요소들이 드래그 앤 드롭 기능을 더 역동적으로 만들어주는 요소라고 생각했습니다.
 <br><br><br>
 
-> ## ⏰ 타이머
+> ## 타이머
 
 ⏰ 게임처럼 즐기는 퀴즈, 타이머 구현기
 
@@ -275,8 +278,8 @@ const { getRootProps, getInputProps, isDragActive } = useDropzone({
 <ProgressBar
   key={questionIndex}
   className="ml-1"
-  completed={progress} // 0 → 100으로 변경됨
-  maxCompleted={100} // 최대값 100
+  completed={progress}
+  maxCompleted={100}
   height="10px"
   width="550px"
   borderRadius="50px"
@@ -298,9 +301,9 @@ const { getRootProps, getInputProps, isDragActive } = useDropzone({
 
 <br><br><br>
 
-> ## 🖥️ Background Processing
+> ## Background Processing
 
-사용자가 '퀴즈 만들기' 버튼을 누르고 퀴즈가 생성되기까지 평균적으로 20-30초가 소요됩니다. 퀴즈 생성은 핵심기능인만큼 사용자가 기다려야하는 시간일 절대적으로 줄이는 여러가지 방법을 찾아보면 좋겠다는 생각이 들었습니다. **"버튼을 누르기 전에 사용자의 입력 단계에서 서버로 미리 데이터를 전송하고 분석을 시작하면 안될까?"** 하는 궁금증이 들었습니다. 곧 '퀴즈 생성 버튼'를 누르지만, 생성이 완료되었다면 퀴즈를 보여주고 아직 진행 중이라면 로딩화면을 유지하는 구조로 사용자가 조금이라도 기다리는 시간을 줄일 수 있을 것 같았습니다.
+사용자가 '퀴즈 만들기' 버튼을 누르고 퀴즈가 생성되기까지 평균적으로 20-30초가 소요됩니다. 퀴즈 생성은 핵심기능인만큼 사용자가 기다려야하는 시간을 절대적으로 줄이는 여러가지 방법을 찾아보면 좋겠다는 생각이 들었습니다. **"버튼을 누르기 전에 사용자의 입력 단계에서 서버로 미리 데이터를 전송하고 분석을 시작하면 안될까?"** 하는 궁금증이 들었습니다. 곧 '퀴즈 생성 버튼'를 누르지만, 생성이 완료되었다면 퀴즈를 보여주고 아직 진행 중이라면 로딩화면을 유지하는 구조로 사용자가 조금이라도 기다리는 시간을 줄일 수 있을 것 같았습니다.
 
 <Br>
 
@@ -310,7 +313,7 @@ const { getRootProps, getInputProps, isDragActive } = useDropzone({
 
 동시에 사용자의 동의 없이 미리 데이터를 서버로 전송하는 것은 문제가 없을까 의문점도 들었습니다. 그래서 **윤리적으로 문제가 없을지 사례를 찾아봤습니다.**
 you-tube, netflix 영상을 클릭하기 전 호버만해도 영상이 로드 되는 pre-fetch / pre-load 기술과 비슷한 것 같았으나, 저는 사용자의 입력데이터를 미리 처리하는 것이기 때문에 맥락이 조금 달랐습니다. 실서비스로부터 힌트를 얻고자 고민하는 시간을 보내다 문득 자주 사용하는 번역기의 패턴이 생각났습니다. 텍스트를 타이핑하는 중간에 실시간으로 번역해주는 것. 그것과 같은 패턴일 것 같다는 생각이 들었습니다. <br><br>
-실제 서비스하는 것의 사례와 패턴을 이해하니, 더 많은 서비스들이 보였습니다. 무게에 차이는 있지만 검색엔진에서 텍스트를 타이핑하는 중간 연관검색어 제시, 구글 스프레드시트의 자동 저장 그리고 **구글 포토에 사진을 업로드하면 AI가 사진 분석을 시작하는 서비스** 등이 서버 측에서 선처리를 수행하는 방식이 충분히 설득력 있고 일반적인 패턴이라는 확신을 갖게 되었습니다.
+실제 서비스하는 것의 사례와 패턴을 이해하니, 더 많은 서비스들이 보였습니다. 검색엔진에서 텍스트를 타이핑하는 중간 연관검색어 제시, 구글 스프레드시트의 자동 저장 그리고 **구글 포토에 사진을 업로드하면 AI가 사진 분석을 시작하는 서비스** 등이 서버 측에서 선처리를 수행하는 방식이 충분히 설득력 있고 일반적인 패턴이라는 확신을 갖게 되었습니다.
 여러 사례를 확인하며 해당 방식에 문제가 없는지 검토했고, 이를 찾아보는 과정 자체도 충분히 의미 있는 경험이었습니다.
 
 <br><br><br>
@@ -324,21 +327,3 @@ AI 기반 코드 리뷰 도구를 활용해 코드 품질을 자가점검하고,
 두 번의 프로젝트를 연달아 진행했지만, 그 과정에서 느낀 가장 큰 인사이트는 결국 ‘직접 부딪히고 경험하는 것’이 가장 빠른 성장의 길이라는 것이었습니다. 더 다양한 환경과 팀에서 협업하며 더 많은 경험을 쌓으며 개발 역량뿐 아니라 커뮤니케이션 능력, 문제 해결력까지 함께 성장시켜 나가고자 합니다.
 
 <br>
-<br>
-<br>
-
-## 기능 보완 계획
-
-2주차
-
-- 스마트폰 앱서비스 추가
-- Background processing ⇒ x 취소시 디비에서 삭제 처리
-- 청크
-- 파일 업로드 프로그래스바
-
-3주차
-
-- 클립보드 텍스트 양 제한
-- 퀴즈 생성시간 단축 방법
-- 잘못된 파일 드롭시 사용자 피드백
-- 리팩토링
