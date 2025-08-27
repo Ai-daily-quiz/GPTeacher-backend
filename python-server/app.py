@@ -72,7 +72,7 @@ def generate_quiz(text, user_id, formatted_date):
         => 전체 총 question 퀴즈 문제 수 12개
 
         카테고리 분류기준 : {category_ref}**
-        ** 제시하는 주제는 위 주제에서 벗어나지 않아야해**
+        ** 제시하는 주제는 위 주제에서 벗어나지 않아야하고 분류기준 외 topic을 만들어내면 안돼**
 
         텍스트: {text[:MAX_TEXT_LENGTH]}
 
